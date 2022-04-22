@@ -8,6 +8,7 @@ y = []
 nodes = []
 
 # label axis
+plt.title(f.readline())
 plt.xlabel(f.readline())
 plt.ylabel(f.readline())
 
