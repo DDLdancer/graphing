@@ -1,5 +1,8 @@
-all: weak strong
+DATA = $(wildcard *.dat)
+OBJS = $(DATA:.dat=.png)
 
-weak strong:
-	python3 graph.py $@.dat
-	mv $@.png /mnt/d/graph/
+all: $(OBJS)
+
+%.png: %.dat
+	python3 graph.py $^
+	mv $@ /mnt/d/graph/
