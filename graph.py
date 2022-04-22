@@ -1,19 +1,31 @@
 import matplotlib.pyplot as plt
 import sys
+from math import log
 
 f = open(sys.argv[1], 'r')
-xs = []
-ys = []
+x = []
+y = []
+nodes = []
+
+# label axis
+plt.xlabel(f.readline())
+plt.ylabel(f.readline())
 
 data = f.readline()
 while data != '':
-    x, y = map(float, data.split())
-    xs.append(x)
-    ys.append(y)
+    xi, yi = map(float, data.split())
+    nodes.append(xi)
+    x.append(log(xi, 2)) # use log on number of nodes
+    y.append(yi)
     data = f.readline()
 
-plt.xlabel("node number (2^x nodes)")
-plt.ylabel("time")
-plt.plot(xs, ys)
+# disable x axis number
+plt.xticks([])
+
+plt.plot(x, y)
+
+for i in range(len(nodes)):
+    plt.annotate(f"{nodes[i]:.0f}", (x[i], y[i]))
+
 plt.ylim(bottom = 0)
 plt.savefig(sys.argv[1].split(".")[0])
