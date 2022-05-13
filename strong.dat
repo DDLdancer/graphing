@@ -1,6 +1,7 @@
-HOOI-ALS: Total of 4GB data
-number of nodes
-Time(s)
-4 42.23
-8 23.15
-16 13.35
+HOOI-ALS: 8GB data in Total
+number of cores
+speed up
+1 4 120.1
+1 8 52.0
+1 16 29.5
+1 32 15.2

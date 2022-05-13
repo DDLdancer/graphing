@@ -1,6 +1,7 @@
-HOOI-ALS: 1GB data per node
-number of nodes
-Time(s)
-8 41.89
-16 48.65
-32 52.55
+HOOI-ALS: 1GB data per core
+number of cores
+speed up
+1 4 43.2
+2 8 42.6
+4 16 44.7
+8 32 52.5

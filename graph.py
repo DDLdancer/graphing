@@ -13,11 +13,15 @@ plt.xlabel(f.readline())
 plt.ylabel(f.readline())
 
 data = f.readline()
+min=100000000 # TODO: how to display large number in python3
 while data != '':
-    xi, yi = map(float, data.split())
+    data, xi, yi = map(float, data.split())
+    speed = data / yi
+    if (speed < min):
+        min = speed
     nodes.append(xi)
     x.append(log(xi, 2)) # use log on number of nodes
-    y.append(yi)
+    y.append(speed / min)
     data = f.readline()
 
 # disable x axis number
