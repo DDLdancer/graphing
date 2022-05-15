@@ -21,7 +21,7 @@ while data != '':
         min = speed
     nodes.append(xi)
     x.append(log(xi, 2)) # use log on number of nodes
-    y.append(speed / min)
+    y.append(log(speed / min, 2))
     data = f.readline()
 
 # disable x axis number
