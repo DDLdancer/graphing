@@ -45,4 +45,5 @@ ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 ax.set_ylim(bottom = 1, top = x[-1]/x[0])
 ax.set_xlim(left = x[0])
 
+plt.legend()
 plt.savefig(sys.argv[1].split(".")[0])
