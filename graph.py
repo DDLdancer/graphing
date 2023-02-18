@@ -6,6 +6,7 @@ from math import log
 f = open(sys.argv[1], 'r')
 x = []
 y = []
+y_ideal = []
 nodes = []
 
 fig, ax = plt.subplots()
@@ -24,10 +25,12 @@ while data != '':
         min = speed
     nodes.append(xi)
     x.append(xi) # use log on number of nodes
+    y_ideal.append(xi/x[0])
     y.append(speed / min)
     data = f.readline()
 
-ax.plot(x, y)
+ax.plot(x, y, label = "Actual")
+ax.plot(x, y_ideal, label = "Ideal")
 ax.set_xticks(x)
 
 ax.set_xscale('log', base = 2)
@@ -41,4 +44,5 @@ ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 ax.set_ylim(bottom = 1, top = x[-1]/x[0])
 ax.set_xlim(left = x[0])
+
 plt.savefig(sys.argv[1].split(".")[0])
