@@ -1,6 +1,6 @@
 HOOI-ALS: Weak scaling performance (1GB data per core)
 number of cores
-speed up (2^x)
+speed up
 1 4 43.2
 2 8 42.6
 4 16 44.7

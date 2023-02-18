@@ -1,6 +1,6 @@
 HOOI-ALS: Strong scaling performance (8GB data in Total)
 number of cores
-speed up (2^x)
+speed up
 1 4 120.1
 1 8 52.0
 1 16 29.5

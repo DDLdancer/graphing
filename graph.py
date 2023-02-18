@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import sys
 from math import log
@@ -7,30 +8,37 @@ x = []
 y = []
 nodes = []
 
+fig, ax = plt.subplots()
+
 # label axis
-plt.title(f.readline())
-plt.xlabel(f.readline())
-plt.ylabel(f.readline())
+ax.set_title(f.readline())
+ax.set_xlabel(f.readline())
+ax.set_ylabel(f.readline())
 
 data = f.readline()
 min=100000000 # TODO: how to display large number in python3
 while data != '':
-    data, xi, yi = map(float, data.split())
-    speed = data / yi
+    data, xi, time = map(float, data.split())
+    speed = data / time
     if (speed < min):
         min = speed
     nodes.append(xi)
-    x.append(log(xi, 2)) # use log on number of nodes
-    y.append(log(speed / min, 2))
+    x.append(xi) # use log on number of nodes
+    y.append(speed / min)
     data = f.readline()
 
-# disable x axis number
-plt.xticks([])
+ax.plot(x, y)
+ax.set_xticks(x)
 
-plt.plot(x, y)
+ax.set_xscale('log', base = 2)
+ax.set_yscale('log', base = 2)
 
-for i in range(len(nodes)):
-    plt.annotate(f"{nodes[i]:.0f}", (x[i], y[i]))
+ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
-plt.ylim(bottom = 0)
+# label on the chart
+# for i in range(len(nodes)):
+    # plt.annotate(f"{nodes[i]:.0f}", (x[i], y[i]))
+
+ax.set_ylim(bottom = 1, top = x[-1]/x[0])
+ax.set_xlim(left = x[0])
 plt.savefig(sys.argv[1].split(".")[0])
