@@ -1,7 +1,7 @@
-HOOI-ALS: Strong scaling performance (8GB data in Total)
+Strong scaling performance (1 million particles in Total)
 number of cores
-speed up
-1 4 120.1
-1 8 52.0
-1 16 29.5
-1 32 15.2
+speed up (flops)
+1 1 323.917
+1 4 103.751
+1 16 66.2941
+1 64 124.082

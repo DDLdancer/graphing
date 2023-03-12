@@ -44,10 +44,13 @@ ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 # set limit for each axis
 ax.set_ylim(bottom = 1, top = x[-1]/x[0])
-ax.set_xlim(left = x[0])
+ax.set_xlim(left = x[0], right = x[-1])
 
 # display line name
 plt.legend()
+
+# Show grid
+plt.grid()
 
 # save the chart
 plt.savefig(sys.argv[1].split(".")[0])
