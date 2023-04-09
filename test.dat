@@ -1,0 +1,90 @@
+Test
+2
+Testing with 1 nodes and 64 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.049646
+0.559809
+0.048202
+0.461186
+0.064826
+0.362341
+0.039943
+0.770068
+0.041177
+0.778486
+Testing with 1 nodes and 60 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.056041
+0.140122
+0.047573
+0.541117
+0.053096
+0.151028
+0.047479
+0.598447
+0.053051
+1.095899
+Testing with 2 nodes and 64 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.636771
+1.176090
+0.747362
+1.186715
+0.358355
+0.827137
+0.958017
+1.733704
+0.278781
+0.735966
+Testing with 2 nodes and 60 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.975968
+1.434640
+0.343838
+0.791906
+0.328460
+0.791109
+0.558949
+1.223925
+0.277511
+0.760174
+Testing with 4 nodes and 64 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.479706
+0.906012
+0.585739
+0.992753
+0.591452
+0.996475
+1.267398
+1.686586
+1.114072
+1.539314
+Testing with 4 nodes and 60 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+1.154623
+1.613379
+1.242945
+1.671049
+1.564367
+2.014020
+0.545365
+1.113185
+0.777778
+1.210164
+Testing with 8 nodes and 64 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.366700
+0.634518
+0.789082
+1.067640
+1.313313
+1.609417
+0.446688
+0.719196
+0.347223
+0.600490
+Testing with 8 nodes and 60 tasks per node, /global/cfs/cdirs/mp309/cs267-spr2020/hw3-datasets/test.txt dataset
+0.099755
+0.703478
+1.015869
+1.345421
+0.364068
+0.670530
+0.987872
+1.295535
+1.171524
+1.477228

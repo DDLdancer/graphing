@@ -1,7 +1,0 @@
-Strong scaling performance (1 million particles in Total)
-number of cores
-speed up (flops)
-1 1 323.917
-1 4 103.751
-1 16 66.2941
-1 64 124.082

@@ -1,56 +1,61 @@
-import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
 import sys
-from math import log
 
+REPEAT=5
+
+plt.rc('font', size=6)
+
+# colors: https://matplotlib.org/stable/gallery/color/named_colors.html
+nodes = ("1 nodes", "2 nodes", "4 nodes", "8 nodes")
+data = {
+    'Insert (64 tasks)': [[], "#003049"],
+    'Assemble (64 tasks)': [[], "#D62828"],
+    'Insert (60 tasks)': [[], "#F77F00"],
+    'Assemble (60 tasks)': [[], "#EAE2B7"],
+}
+
+# Using readlines()
 f = open(sys.argv[1], 'r')
-x = []
-y = []
-y_ideal = []
-nodes = []
 
-fig, ax = plt.subplots()
+title = f.readline()
+ylim = float(f.readline())
+ 
+count = 0
 
-# label axis
-ax.set_title(f.readline())
-ax.set_xlabel(f.readline())
-ax.set_ylabel(f.readline())
+def read(node):
+# Strips the newline character
+    for i in range(4):
+        f.readline()
+        insert = []
+        assemble = []
+        for j in range(REPEAT):
+            insert.append(float(f.readline()))
+            assemble.append(float(f.readline()))
+        data[f"Assemble ({node} tasks)"][0].append(sum(insert) / len(insert))
+        data[f"Insert ({node} tasks)"][0].append(sum(assemble) / len(assemble))
+    
+read("64")
+read("60")
 
-# read data
-data = f.readline()
-min=sys.maxsize
-while data != '':
-    data, xi, time = map(float, data.split())
-    speed = data / time
-    if (speed < min):
-        min = speed
-    nodes.append(xi)
-    x.append(xi) # use log on number of nodes
-    y_ideal.append(xi/x[0])
-    y.append(speed / min)
-    data = f.readline()
+x = np.arange(len(nodes))  # the label locations
+width = 0.20  # the width of the bars
+multiplier = 0
 
-# draw lines
-ax.plot(x, y, label = "Actual")
-ax.plot(x, y_ideal, label = "Ideal")
-ax.set_xticks(x)
+fig, ax = plt.subplots(layout='constrained')
 
-# set to log scaling
-ax.set_xscale('log', base = 2)
-ax.set_yscale('log', base = 2)
+for attribute, measurement in data.items():
+    offset = width * multiplier
+    rects = ax.bar(x + offset, measurement[0], width, label=attribute, color=measurement[1])
+    ax.bar_label(rects, fmt='%.2f', padding=3)
+    multiplier += 1
 
-# make ticker none log based
-ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
-
-# set limit for each axis
-ax.set_ylim(bottom = 1, top = x[-1]/x[0])
-ax.set_xlim(left = x[0], right = x[-1])
-
-# display line name
-plt.legend()
-
-# Show grid
-plt.grid()
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Time (second)')
+ax.set_title(f'{title} dataset assemble and insertion time by number of nodes')
+ax.set_xticks(x + width, nodes)
+ax.legend(loc='upper left', ncols=3)
+ax.set_ylim(0, ylim)
 
 # save the chart
-plt.savefig(sys.argv[1].split(".")[0])
+plt.savefig(sys.argv[1].split(".")[0], dpi=300)
